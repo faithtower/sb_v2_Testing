@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./stylesheet/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./stylesheet/main.css" />
+</head>
+<body>
+    <header class="heading p-3 text-light text-center d-flex">
+            <div>
+                <img src="./images/unnamed.png" width="100px" class="img-thumbnail rounded" alt="">
+            </div>
+            <div class="text-left ml-3">
+                <h2>SHARP BRAIN GAME</h2>
+                <h4>Test your critical Thinking Level</h4>
+            </div>
+            
+    </header>
+
+    <div class="levelsBtnSection bg-white">
+        <div><button id="beginnerBtn" class="border-right levelBtn">Beginner</button></div>
+        <div><button id="intermediateBtn" class=" border-right levelBtn">Intermediate</button></div>
+        <div><button id="advanceBtn" class="levelBtn">Advance</button></div>
+    </div>
+    <div class="moreLevelsBtn">
+        <div><button id="bLevel1" class="moreLevels border-right">Level 1</button></div>
+        <div><button id="bLevel2" class="moreLevels">Level 2</button></div>
+        <div><button id="iLevel1" class="moreLevels border-right">Level 1</button></div>
+        <div><button id="iLevel2" class="moreLevels">Level 2</button></div>
+        <div><button id="aLevel1" class="moreLevels border-right">Level 1</button></div>
+        <div><button id="aLevel2" class="moreLevels">Level 2</button></div>
+    </div>
+    
+    
+    
+    
+    
+    
+
+    <div class="container my-3 text-center text-danger">
+    Scores: <span id="record" class="bg-secondary text-light rounded py-1 px-3"></sp>
+    </div>  
+
+    <div class="mainContent">
+        <div class="row mx-auto justify-content-around"> <!-- Row-->
+            <div class="col-lg-6 bg-light p-3 m-2 gameSection text-center">
+                <table id="sb">
+                    <tr>
+                        <td><input type="number" id="box1" class="boxes" value=""></td>
+                        <td><span id="sign1" class="displaySign">sign1</span></td>
+                        <td><input type="number" id="box2" class="boxes" value=""></td>
+                        <td><span id="sign5" class="displaySign">sign2</span></td>
+                        <td><input type="number" id="box5" class="boxes" value=""></td>
+                        <td><span id="equals1">=</span></td>
+                        <td><input type="number" id="res1" value="1000" class="sideResField" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td><span id="sign2" class="displaySign">sign 3</span></td>
+                        <td></td>
+                        <td><span id="sign3" class="displaySign">sign 4</span></td>
+                        <td></td>
+                        <td><span id="sign6" class="displaySign">sign5</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="number" id="box3" class="boxes" value=""></td>
+                        <td><span id="sign4" class="displaySign">sign6</span></td>
+                        <td><input type="number" id="box4" class="boxes" value=""></td>
+                        <td><span id="sign7" class="displaySign">sign7</span></td>
+                        <td><input type="number" id="box6" class="boxes" value=""></td>
+                        <td><span id="equals2">=</span></td>
+                        <td><input type="number" id="res2" value="1000" class="sideResField" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td><span id="sign8" class="displaySign">sign8</span></td>
+                        <td></td>
+                        <td><span id="sign9" class="displaySign">sign 9</span></td>
+                        <td></td>
+                        <td><span id="sign10" class="displaySign">sign10</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="number" id="box7" class="boxes" value=""></td>
+                        <td><span id="sign11" class="displaySign">sign11</span></td>
+                        <td><input type="number" id="box8" class="boxes" value=""></td>
+                        <td><span id="sign12" class="displaySign">sign12</span></td>
+                        <td><input type="number" id="box9" class="boxes" value=""></td>
+                        <td><span id="equals6">=</span></td>
+                        <td><input type="number" id="res6" value="6" class="sideResField" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td><span id="equals3">||</span></td>
+                        <td></td>
+                        <td><span id="equals4">||</span></td>
+                        <td></td>
+                        <td><span id="equals5">||</span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="number" id="res3" value="1000" class="bottomResField" disabled></td>
+                        <td></td>
+                        <td><input type="number" id="res4" value="1000" class="bottomResField" disabled></td>
+                        <td></td>
+                        <td><input type="number" id="res5" value="5" class="bottomResField" disabled></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <div class="submitButton"><button id="submitBtn" class="btn btn-primary btn-block px-5 my-3 text-center">Submit</button></div>
+            </div>
+
+            <div class="instructionSection bg-white col-lg-5 m-2 p-2">
+                <div class="py-3 text-center mx-auto">
+                    <button id="shuffleBtn" class="btn btn-block btn-success py-2"><i class="fas fa-random"></i> Shuffle</button>
+                </div>
+        
+                <div class="instructions p-3">
+                    <p class="text-danger text-center"> Instructions</p>
+                    Think Carefully and enter appriopriate <span class="font-weight-bold">NUMBERS</span> in the empty fields 
+                    which can be <span class="font-weight-bold">EVALUATED</span> to get the desired results for all four(4) results fields
+                    <div class="border shadow my-3 p-2">
+                            <p><span class="text-danger h3"> + </span> Addition<br>
+                                <span class="text-danger h3"> * </span> Multiplication <br>
+                                <span class="text-danger h3"> - </span> Subtraction 
+                            </p>
+                        <span class="text-primary">Submit</span> your results when you are sure of your answer
+                    </div>
+                    <p class="border my-3"></p>
+                    <p>You can Reshuffle the numbers by Clicking on the <span class="text-success">Shuffle Button</span></p>
+                </div>
+            </div>
+        </div> <!-- End of row-->
+
+    </div> <!-- End of Main Content-->
+
+    
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
