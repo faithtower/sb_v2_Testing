@@ -14,14 +14,14 @@ var box1 = document.querySelector("#box1"),     box2 = document.querySelector("#
     beginnerBtn = document.querySelector("#beginnerBtn"),   intermediateBtn = document.querySelector("#intermediateBtn"),   advanceBtn = document.querySelector("#advanceBtn"),
     bLevel1 = document.querySelector("#bLevel1"),   bLevel2 = document.querySelector("#bLevel2"),   iLevel1 = document.querySelector("#iLevel1"), iLevel2 = document.querySelector("#iLevel2"),
     aLevel1 = document.querySelector("#aLevel1"), aLevel2 = document.querySelector("#aLevel2"), record = document.querySelector("#record"),
-    submitBtn = document.querySelector("#submitBtn"),   shuffleBtn = document.querySelector('#shuffleBtn');
+    submitBtn = document.querySelector("#submitBtn"),   shuffleBtn = document.querySelector('#shuffleBtn'), message = document.querySelector("#message");
 
 //Global Variable declarations
 var     number = 4, numberOfSigns=4, uBIndex=0, maxNumber = 9, maxNumberOfSigns = 12, numberOfResFields = 4, maxNumberOfResFields = 6, getRecord = 0;
 const   signs = ['+', '-', '*'];
 var     getSign1,   getSign2,   getSign3,   getSign4,   getSign5,   getSign6,   getSign7,   getSign8,   getSign9,   getSign10,      getSign11,     getSign12;
 var     num1,       num2,       num3,       num4,       num5,       num6,       num7,       num8,       num9;
-
+var alert = false;
 record.textContent = ""+ getRecord;
 
 //Initial Function===================================
@@ -45,6 +45,7 @@ const handleAll = () => {
     hideUnwantedRes();
     evaluate();
     record.textContent = ""+ getRecord;
+    startAnimation();
 }
 
 const hideLevelBtns = () => {
@@ -83,7 +84,6 @@ beginnerBtn.onclick =  () => {
     colorStyles(bLevel1, bLevel2);
     levelColorStyles(beginnerBtn, intermediateBtn, advanceBtn);
 };
-
 bLevel1.onclick = () => {
     uBIndex = 0;
     beginner();
@@ -94,17 +94,16 @@ bLevel2.onclick = () => {
     beginner();
     colorStyles(bLevel2, bLevel1);
 }
-
 const beginner = () => {
     getRecord = 0;
     number = 4;
     numberOfSigns = 4;
     numberOfResFields = 4;
     handleAll();
+    removeMessageClass();
+    
     
 }
-
-
 intermediateBtn.onclick = () => {
     uBIndex = 2;
     intermediate();
@@ -123,13 +122,14 @@ iLevel2.onclick = () => {
     intermediate();
     colorStyles(iLevel2, iLevel1);
 }
-
 const intermediate = () => {
     getRecord = 0;
     number = 6;
     numberOfSigns = 7;
     numberOfResFields = 5;
     handleAll();
+    removeMessageClass();
+    
     
 }
 advanceBtn.onclick = () => {
@@ -141,7 +141,6 @@ advanceBtn.onclick = () => {
     levelColorStyles(advanceBtn, beginnerBtn, intermediateBtn);
 
 };
-
 aLevel1.onclick = () => {
     uBIndex = 4;
     advance();
@@ -152,13 +151,14 @@ aLevel2.onclick = () => {
     advance();
     colorStyles(aLevel2, aLevel1);
 }
-
 const advance = () => {
     getRecord = 0;
     number = maxNumber;
     numberOfSigns = 12;
     numberOfResFields = 6;
     handleAll();
+    removeMessageClass();
+    
     
 }
 //===================================================
@@ -230,7 +230,6 @@ const hideUnwantedRes = () => {
             window[res].style.display = 'none';
             var equals = "equals" + i;
             window[equals].style.display = 'none';
-
         }
     }
 }
@@ -244,14 +243,13 @@ const generateSigns = () => {
         window[sign].textContent = window[getSign];
     }
 }
-
 //Generating Numbers and storing it in their respective variables
 const generateNumbers = () => {
     for(var i =1; i <= number; i++){
         var num = "num" + [i];
         var box = "box" + [i];
         window[num] = Math.floor(Math.random()*number);
-        window[box].value = window[num];;
+        window[box].value = window[num];
     }
 }
 
@@ -295,12 +293,13 @@ const evaluate = () => {
         res3.value = eval(num1 + getSign2 + num3);  res4.value = eval(num2 + getSign3 + num4);
 
         submitBtn.onclick = () => {
+            displayMessage.gen();
             if(box1.value == num1 && box2.value == num2 && box3.value == num3 && box4.value == num4){
-                console.log("Correct!! Well Done");
+                displayMessage.success1();
                 getRecord += 1;
                 handleAll();
             }else{
-                console.log("Sorry!! Try Again")
+                displayMessage.failure();
             }
         }
     }else if(number == 6){
@@ -311,12 +310,13 @@ const evaluate = () => {
         res5.value = eval(num5 + getSign6 + num6);
 
         submitBtn.onclick = () => {
-            if(box1.value == num1 && box2.value == num2 && box3.value == num3 && box4.value == num4 && box5.value == num5 && box6.value == num6){
-                console.log("Bravoo!! You are a critical Thinker");
+            displayMessage.gen();
+            if(box1.value == num1 && box2.value == num2 && box3.value == num3 && box4.value == num4 && box5.value == num5 && box6.value == num6){displayMessage.success1();
+                displayMessage.success2();
                 getRecord += 1;
                 handleAll();
             }else{
-                console.log("Sorry!! Try Again")
+                displayMessage.failure();
             }
         }
     }else if(number == 9){
@@ -328,19 +328,70 @@ const evaluate = () => {
         res6.value = eval(num7 + getSign11 + num8 + getSign12 + num9);
 
         submitBtn.onclick = () => {
+            displayMessage.gen();
             if(box1.value == num1 && box2.value == num2 && box3.value == num3 && box4.value == num4 && box5.value == num5 && box6.value == num6 && box7.value == num7 && box8.value == num8 && box9.value == num9){
-                console.log("Excellent!! You are a Genius");
+                displayMessage.success3();
                 getRecord += 1;
                 handleAll();
             }else{
-                console.log("Sorry!! Try Again")
+                displayMessage.failure();
             }
         }
     }
 }
-
-shuffleBtn.onclick = () => {
-    handleAll();
+const displayMessage = {
+    gen: () => {
+        removeMessageClass();
+        message.classList.add("alert", "py-1", "m-3", "text-center");
+    },
+    success1: () => {
+        message.classList.add("alert-success");
+        message.textContent = "Correct! Well done";
+    },
+    success2: () => {
+        message.classList.add("alert-success");
+        message.textContent = "Good job!! You are a critical Thinker";
+    },
+    success3:  () => {
+        message.classList.add("alert-success");
+        message.textContent = "Excellent!! You are a Genius";
+    },
+    failure: () => {
+        message.classList.add("alert-danger");
+        message.textContent = "Sorry! Try agian";
+    }  
 }
 
+const removeMessageClass = () => {
+    message.textContent = "";
+    message.removeAttribute('class');
+}
+
+shuffleBtn.onclick = () => {
+    removeMessageClass();
+    handleAll();
+}
+const startAnimation = () => {
+    //Array to storeall animations
+    const animation = [
+        "bounce",	    "flash",	        "pulse",	        "rubberBand",
+        "shake",	    "headShake",	    "swing",	        "tada",
+        "wobble",	    "jello",	        "slideInDown",      "heartBeat",
+        "fadeIn",	    "fadeInDown",	    "fadeInDownBig",    "fadeInLeft",
+        "fadeInLeftBig","fadeInRight",	    "fadeInRightBig",   "fadeInUp",
+        "fadeInUpBig",	"zoomInLeft",	    "zoomInRight",	    "zoomInUp",
+        "rollIn",	    "flipInX",	        "flipInY"
+    ];
+
+    var changeAnimation1 = animation[Math.floor(Math.random()*animation.length)], changeAnimation2 = animation[Math.floor(Math.random()*animation.length)],
+        changeAnimation3 = animation[Math.floor(Math.random()*animation.length)], changeAnimation4 = animation[Math.floor(Math.random()*animation.length)];   
+
+    //Adding Animations to Fields
+    a = "animated";
+    box1.classList.add(a, changeAnimation1);box2.classList.add(a, changeAnimation2);box3.classList.add(a, changeAnimation3);
+    box4.classList.add(a, changeAnimation4);box5.classList.add(a, changeAnimation1);box6.classList.add(a, changeAnimation2);
+    box7.classList.add(a, changeAnimation3);box8.classList.add(a, changeAnimation4);box9.classList.add(a, changeAnimation4);
+    res1.classList.add(a, changeAnimation1);res2.classList.add(a, changeAnimation2);res3.classList.add(a, changeAnimation3);
+    res4.classList.add(a, changeAnimation4);res5.classList.add(a, changeAnimation4);res6.classList.add(a, changeAnimation4);
+}
 init();

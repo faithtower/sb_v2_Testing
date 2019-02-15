@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Sharp Brain 2 | Beta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./stylesheet/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./stylesheet/main.css" />
 </head>
@@ -40,13 +42,18 @@
     
     
 
-    <div class="container my-3 text-center text-danger">
-    Scores: <span id="record" class="bg-secondary text-light rounded py-1 px-3"></sp>
+    <div class="my-3 text-center text-danger d-flex justify-content-around p-2 bg-light">
+        <div class="w-50 p-2">Scores: <span id="record" class="bg-secondary text-light rounded py-2 px-4"></span></div>
+        <div class="text-center w-50">
+            <button id="shuffleBtn" class="btn w-75 btn-info py-2"><i class="fas fa-random"></i> Shuffle</button>
+        </div>
     </div>  
 
     <div class="mainContent">
         <div class="row mx-auto justify-content-around"> <!-- Row-->
             <div class="col-lg-6 bg-light p-3 m-2 gameSection text-center">
+
+                <div id="message"></div>
                 <table id="sb">
                     <tr>
                         <td><input type="number" id="box1" class="boxes" value=""></td>
@@ -123,18 +130,43 @@
             </div>
 
             <div class="instructionSection bg-white col-lg-5 m-2 p-2">
-                <div class="py-3 text-center mx-auto">
-                    <button id="shuffleBtn" class="btn btn-block btn-success py-2"><i class="fas fa-random"></i> Shuffle</button>
-                </div>
         
                 <div class="instructions p-3">
                     <p class="text-danger text-center"> Instructions</p>
-                    Think Carefully and enter appriopriate <span class="font-weight-bold">NUMBERS</span> in the empty fields 
-                    which can be <span class="font-weight-bold">EVALUATED</span> to get the desired results for all four(4) results fields
+                    The Game consist of Three Levels <span class="font-weight-bold">Beginner, Intermediate and Advance.</span> 
+                    Each level contains two extra Levels <span class="text-primary">Level 1 & Level 2</span>
+                    <br>
+                    <p class="bg-light p-1">
+                        <p class=""><span class="text-light bg-primary rounded p-1">Beginner</span> gives you four Boxes.</p> 
+                        <span class="text-light bg-dark rounded p-1">Level 1</span> of the Beginner Level gives you two(2) empty boxes to fill.
+                        <br> <span class="text-light bg-dark rounded p-1">Level 2</span> of the Beginner Level gives you three(3) empty boxes to fill.
+                    </p>
+                    <p class="bg-light p-1">
+                        <p class=""><span class="text-light bg-primary rounded p-1">Intermediate</span> gives you Six Boxes.</p> 
+                        <span class="text-light bg-dark rounded p-1">Level 1</span> of the Intermediate Level gives you three(3) empty boxes to fill.
+                        <br> <span class="text-light bg-dark rounded p-1">Level 2</span> of the Intermediate Level gives you four(4) empty boxes to fill.
+                    </p>
+                    <p class="bg-light p-1">
+                        <p class=""><span class="text-light bg-primary rounded p-1">Advance</span> gives you Nine(9) Boxes.</p> 
+                        <span class="text-light bg-dark rounded p-1">Level 1</span> of the Advance Level gives you four(4) empty boxes to fill.
+                        <br> <span class="text-light bg-dark rounded p-1">Level 2</span> of the Beginner Level gives you five(5) empty boxes to fill.
+                    </p>
+                    <div>
+                        <p class="text-light bg-info rounded text-center">Use BODMAS rule</p>
+                        Take note of the signs between the pair of boxes
+                    </div>
                     <div class="border shadow my-3 p-2">
                             <p><span class="text-danger h3"> + </span> Addition<br>
-                                <span class="text-danger h3"> * </span> Multiplication <br>
+                                <span class="text-danger h4"> x </span> Multiplication <br>
                                 <span class="text-danger h3"> - </span> Subtraction 
+                            </p>
+                            <p><span>EXAMPLE:</span> <span class="text-light bg-dark rounded text-center p-2">2 + 4 * 3</span> 
+                                You would evaluate <span class="text-light bg-dark rounded text-center p-1">4 * 3</span> first <br>
+                                and then add the results <span class="text-light bg-dark rounded text-center p-1">2</span>
+                            </p>
+                            <p><span>EXAMPLE:</span> <span class="text-light bg-dark rounded text-center p-2">8 - 5 + 3</span> 
+                                You would evaluate <span class="text-light bg-dark rounded text-center p-1">5 + 3</span> first <br>
+                                and then subtract the results from<span class="text-light bg-dark rounded text-center p-1">8</span>
                             </p>
                         <span class="text-primary">Submit</span> your results when you are sure of your answer
                     </div>

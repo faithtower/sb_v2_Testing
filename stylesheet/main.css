@@ -26,7 +26,7 @@ body{
     justify-content: center;
 }
 .moreLevels{
-    width: 170px;
+    width: 180px;
     border: none;
     padding: 10px 0px;
     transition: all .5s;
@@ -36,7 +36,7 @@ body{
     color: #fff;
 }
 .levelActive{
-    background-color: #181834;
+    background: linear-gradient(90deg,   rgb(86, 6, 200), rgb(209, 2, 246) ) ;
     color: #fff;
 }
 .mainContent{
@@ -103,7 +103,9 @@ body{
 
 @media(max-width: 490px){
     .gameSection{
-        box-shadow: 1px 1px 2px 1px #666;
+        width: 100%;
+    }
+    .instructionSection{
         width: 100%;
     }
     .sideResField{
